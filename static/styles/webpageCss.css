@@ -1,0 +1,44 @@
+.textArea{
+	width: 500px;
+	height: 300px;
+	
+	float:Left;
+	resize: none;
+	margin: 2px;
+	padding: 2px;
+	
+	border: 1.5px solid grey;
+}
+
+.latexArea{
+	width: 500px;
+	height: 300px;
+	
+	float:Left;
+	resize: none;
+	margin: 2px;
+	padding: 2px;
+	
+	border: 1.5px solid grey;
+	
+}
+
+.container{
+	width: 600px;
+	height: 400px;
+	
+	float: Left;
+}
+
+#convButton{
+	width: 100px;
+	height: 50px;
+	
+	margin: 2px;
+	padding: 2px;
+	
+	margin-top: 150px;
+	border: 1.5px solid gray;
+    border-radius: 10px;
+	
+}

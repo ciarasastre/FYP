@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Project Server 2</title>
+  
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/webpageCss.css') }}">
+
+  <script type="text/javascript" src="{{url_for('static', filename='styles/webpageJs.js')}}"></script>
+
+</head>
+
+<body>
+	
+	<!-- Text Area for user input-->
+	<div class="container">
+	User normal Text input here.
+	<textarea class="textArea" id="userInput"> 
+	
+	</textarea>
+	</div>
+	
+	<div class="container">
+	<!-- Area for converted text (soon to be LaTeX) -->
+	User Latex output here.
+	<div class="latexArea" id="userOutput">
+	
+	</div>
+	
+	</div>
+	
+	
+	<!-- Convert button -->
+	<input type="button" id="convButton" value="Convert" onclick="convert()"/>
+	
+	
+
+</body>
+
+</html>

@@ -10,3 +10,4 @@ function convert()
 	
 	latexArea.innerHTML = text;
 }
+

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request,jsonify
 from pylatex import Document, Section, Subsection, Command
 from pylatex.utils import italic, NoEscape
+import json
 
 app = Flask(__name__)
 
@@ -19,21 +20,25 @@ def book():
 
 	Book = jsonify({"bookTitle" : title_name, "bookAuthor" : author_name}) #author_name
 
+	with open('file.json', 'w') as Book:
+		json.dump(request.form, Book)
+	return render_template('webpageproto1.html')
+
 	#LaTex Time
 
 	# Basic Book Creation with title, author
-	book = Document()
+	#book = Document()
 
-	book.preamble.append(Command('title', title_name)) # Would need users input here
-	book.preamble.append(Command('author', author_name)) # Would need users name
-	book.append(NoEscape(r'\maketitle')) #maketitle is an actual command
+	#book.preamble.append(Command('title', title_name)) # Would need users input here
+	#book.preamble.append(Command('author', author_name)) # Would need users name
+	#book.append(NoEscape(r'\maketitle')) #maketitle is an actual command
 
 	#fill_document(book)
 
-	book.generate_pdf('LaTeXUserBook', clean_tex=False)
-	tex=book.dumps() # The document as a string in LaTeX syntax
-	book.generate_tex() 
-	return Book
+	#book.generate_pdf('LaTeXUserBook', clean_tex=False)
+	#tex=book.dumps() # The document as a string in LaTeX syntax
+	#book.generate_tex() 
+	#return Book
 	#return "Your Book is called %s" %(title_name)
 
 #Connect to JSON to view our JSON object

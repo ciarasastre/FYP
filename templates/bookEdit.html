@@ -7,9 +7,30 @@
 	<title> Book Editor Page </title>
 	  
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bookEdit.css') }}">
+	<script type="text/javascript" src="{{url_for('static', filename='styles/bookEdit.js')}}"></script>
+
+	
+	<h1>Fill Book:</h1>
+	<!-- Fill Book button -->
+	<input type="button" id="ltButton" value="FILL BOOK" onclick="apply()"/> <!--onclick="apply()" -->
 
 	<h1> Edit your book here</h1>
 	
+	<p id="demo"> </p>
+
+	<div id="container">
+
+		<div id="info"> 
+		Book Title : </br>
+		Book Author : </br>
+		</div>
+
+		<div> 
+		Write Your book here: </br>
+		<textarea class="textArea" id="userInput"> 
+		</div>
+
+	</div>
 
 
 

@@ -6,14 +6,39 @@ import pprint
 
 app = Flask(__name__)
 
+@app.route("/test")
+def test():
+	return render_template("test.html")
+
 #Connect to the Site Here:
+@app.route("/")
+def hello():
+	return render_template("webpageproto1.html")
+
 @app.route("/home")
 def home():
 	return render_template("webpageproto1.html")
 
 @app.route("/edit")
 def edit():
-	return render_template("bookEdit.html")
+
+	# Opening JSON file
+	def getJSON(filePathAndName):
+		with open(filePathAndName, 'r') as readBook:
+			return json.load(readBook)
+
+	# Creating JSON object instance of Book
+	myObj = getJSON('./json/Harry Potter.json')
+
+	title = myObj.get("title_name","")
+	author = myObj.get("author_name","")
+	chapter = myObj.get("chapter_number","")
+	text = myObj.get("text","")
+
+	#Printing details on webpage
+
+
+	return render_template("bookEdit.html");
 
 #Getting title name back from HTML
 @app.route("/book", methods=["GET","POST"])
@@ -32,7 +57,7 @@ def book():
 
 	#Creates .json file in json folder
 	#Uses titlename as JSON File name
-	with open('./json/'+ title_name + '.json', 'w') as Book:
+	with open('test.json', 'w') as Book: #open('./json/'+ title_name + '.json', 'w')
 		json.dump(request.form, Book)
 	return render_template('bookEdit.html')
 

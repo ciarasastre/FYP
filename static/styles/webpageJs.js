@@ -9,4 +9,3 @@ function convert()
 	var text = textArea.value;
 	latexArea.innerHTML = text;
 }
-

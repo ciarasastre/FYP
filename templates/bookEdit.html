@@ -8,11 +8,18 @@
 	  
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bookEdit.css') }}">
 	<script type="text/javascript" src="{{url_for('static', filename='styles/bookEdit.js')}}"></script>
+</head>
 
-	
+<body>
+
 	<h1>Fill Book:</h1>
 	<!-- Fill Book button -->
 	<input type="button" id="ltButton" value="FILL BOOK" onclick="apply()"/> <!--onclick="apply()" -->
+
+	<input type="button" id="ltButton" value="SAVE"/>
+
+	<!-- Convert button -->
+	<input type="button" id="ltButton" value="PDF"/>
 
 	<h1> Edit your book here</h1>
 	
@@ -20,27 +27,20 @@
 
 	<div id="container">
 
-		<div id="info"> 
-		Book Title : </br>
-		Book Author : </br>
-		</div>
+		<div id="info_all"> 
+			<div id="info_title"> </div> 
+			<div id="info_author"> </div>
+			<div id="info_chpnum"> </div>
 
-		<div> 
-		Write Your book here: </br>
-		<textarea class="textArea" id="userInput"> 
+			<!--<div id="info_text"> </div> -->
+
+			<!-- Should be in text area -->
+			<textarea class="textArea" id="info_text">
+			</textarea> 
+			
 		</div>
 
 	</div>
-
-
-
-
-	<!-- Convert button -->
-	<input type="button" id="ltButton" value="PDF"/>
-
-</head>
-
-<body>
 
 </body>
 

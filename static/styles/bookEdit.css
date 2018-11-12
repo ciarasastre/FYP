@@ -9,3 +9,15 @@
 	border: 1.5px solid gray;
     border-radius: 10px;
 }
+
+.textArea{
+	width: 500px;
+	height: 300px;
+	
+	float:Left;
+	resize: none;
+	margin: 2px;
+	padding: 2px;
+	
+	border: 1.5px solid grey;
+}

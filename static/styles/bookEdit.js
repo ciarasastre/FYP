@@ -1,30 +1,27 @@
 function apply()
 {
+    var requestURL = 'http://127.0.0.1:5000/test';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'text';
+    request.send();
 
-	function loadJSON(path, success, error)
-	{
-	    var xhr = new XMLHttpRequest();
-	    xhr.onreadystatechange = function()
-	    {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                if (success)
-	                    success(JSON.parse(xhr.responseText));
-	            } else {
-	                if (error)
-	                    error(xhr);
-	            }
-	        }
-	    };
-	    xhr.open("GET", path, true);
-	    xhr.send();
-	}
+    request.onload = function() 
+    {
+	    var booksText = request.response;
+	    var books = JSON.parse(booksText);
+	    //console.log("Books Title name is : " + books.title_name);
+	    //console.log("Books Author is : " + books.author_name);
+	    //console.log("Books Chapter number is : " + books.chapter_number);
+	    //console.log("Books Text is : " + books.text);
+	    
 
-	//http://127.0.0.1:5000/test
-	loadJSON('http://127.0.0.1:5000/test', //'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json'
-         function(data) { console.log(data); },
-         function(xhr) { console.error(xhr); }
-	);
+	    document.getElementById("info_title").innerHTML =  "Book Title : " + books.title_name; 
+	    document.getElementById("info_author").innerHTML =  "Book Author : " + books.author_name;
+	    document.getElementById("info_chpnum").innerHTML =  "Book Chapter number : " + books.chapter_name;
+	    document.getElementById("info_text").innerHTML =  books.text;
+    }
+
 
 	console.log("Button works");
 

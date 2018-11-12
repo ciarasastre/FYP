@@ -8,7 +8,9 @@ app = Flask(__name__)
 
 @app.route("/test")
 def test():
-	return render_template("test.html")
+	# Opening JSON file FOR HTML EDITING
+	return render_template("test.json")
+	#return render_template("test.html");
 
 #Connect to the Site Here:
 @app.route("/")
@@ -22,7 +24,7 @@ def home():
 @app.route("/edit")
 def edit():
 
-	# Opening JSON file
+	# Opening JSON file FOR LATEX
 	def getJSON(filePathAndName):
 		with open(filePathAndName, 'r') as readBook:
 			return json.load(readBook)

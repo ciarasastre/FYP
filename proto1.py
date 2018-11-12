@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,jsonify
 from pylatex import Document, Section, Subsection, Command
 from pylatex.utils import italic, NoEscape
 import json
+import pprint
 
 app = Flask(__name__)
 
@@ -10,6 +11,10 @@ app = Flask(__name__)
 def home():
 	return render_template("webpageproto1.html")
 
+@app.route("/edit")
+def edit():
+	return render_template("bookEdit.html")
+
 #Getting title name back from HTML
 @app.route("/book", methods=["GET","POST"])
 def book():
@@ -17,12 +22,19 @@ def book():
 	# Build JSON Object from form in HTML
 	title_name = request.form["title_name"] #Get HTML put into new var title_name
 	author_name = request.form["author_name"]
+	chapter_number = request.form["chapter_number"]
+	text = request.form["text"]
 
-	Book = jsonify({"bookTitle" : title_name, "bookAuthor" : author_name}) #author_name
+	Book = jsonify({"bookTitle" : title_name,
+	"bookAuthor" : author_name,
+	"bookChapter" : chapter_number,
+	"Text" : text }) 
 
-	with open('file.json', 'w') as Book:
+	#Creates .json file in json folder
+	#Uses titlename as JSON File name
+	with open('./json/'+ title_name + '.json', 'w') as Book:
 		json.dump(request.form, Book)
-	return render_template('webpageproto1.html')
+	return render_template('bookEdit.html')
 
 	#LaTex Time
 

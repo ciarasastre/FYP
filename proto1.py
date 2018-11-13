@@ -23,24 +23,23 @@ def home():
 
 @app.route("/edit")
 def edit():
-
-	# Opening JSON file FOR LATEX
-	def getJSON(filePathAndName):
-		with open(filePathAndName, 'r') as readBook:
-			return json.load(readBook)
-
-	# Creating JSON object instance of Book
-	myObj = getJSON('./json/Harry Potter.json')
-
-	title = myObj.get("title_name","")
-	author = myObj.get("author_name","")
-	chapter = myObj.get("chapter_number","")
-	text = myObj.get("text","")
-
-	#Printing details on webpage
-
-
 	return render_template("bookEdit.html");
+
+@app.route("/done", methods=["GET","POST"])
+def done():
+	newText = request.form["new_text"]
+	#return(newText)
+
+	#Open json file & edit text
+	with open('./templates/test.json', 'r') as editBook:
+		data = json.load(editBook)
+
+	temp = data["text"]
+	data["text"] = newText
+
+	with open('./templates/test.json', 'w') as editBook:
+		json.dump(data, editBook)
+	return("JSON File changed!")
 
 #Getting title name back from HTML
 @app.route("/book", methods=["GET","POST"])

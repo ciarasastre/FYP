@@ -49,4 +49,6 @@ function saveBook()
 	var textArea = document.getElementById('info_text');
 	var newWords = textArea.value;
 	console.log("New Words are " + newWords);
+	document.getElementById("newWords").innerHTML =  newWords;
+
 }

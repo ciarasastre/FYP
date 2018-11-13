@@ -42,11 +42,20 @@
 
 		<div id="newWords"> </div>
 
+		<!-- Saving -->
 		<form action ="/done" method= "POST">
 			<!--Text : <input type="text" name="text"> </br>-->
 			<textarea class="textArea" id="info_text" name="new_text"> </textarea>
 
 			<input type="Submit" name="form" values="Save"/>
+		</form>
+
+
+		<!-- LaTeX Conversion -->
+		<!-- WILL WORK AS SAVE AND END -->
+		<form action ="/latex" method= "POST">
+
+			<input type="Submit" name="done" values="PDF"/>
 		</form>
 
 	</div>

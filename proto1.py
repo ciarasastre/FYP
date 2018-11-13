@@ -62,6 +62,42 @@ def book():
 		json.dump(request.form, Book)
 	return render_template('bookEdit.html')
 
+@app.route("/latex", methods=["GET","POST"])
+def latex():
+	
+	#Actual LaTex Generated Related Code Here
+	from pylatex import Document, Section, Subsection, Command
+	from pylatex.utils import italic, NoEscape
+
+	#Open json file & edit text
+	with open('./templates/test.json', 'r') as PDFBook:
+		data = json.load(PDFBook)
+
+		#Start pulling data from JSON file
+		title_name = data["title_name"]
+		author_name = data["author_name"]
+		chapter_num = data["chapter_number"]
+		book_text = data["text"]
+
+	#return "Book details %s" %(title_name)
+		#if __name__ == '__main__':
+	    # Basic Book Creation with title, author, text
+	book = Document()
+
+	book.preamble.append(Command('title', title_name)) # Would need users input here
+	book.preamble.append(Command('author', author_name)) # Would need users name
+	book.preamble.append(Command('date', NoEscape(r'\today'))) 
+	book.append(NoEscape(r'\maketitle')) #maketitle is an actual command
+
+	# fill_document(book)
+	book.append(chapter_num + '\n')
+	book.append(book_text)
+
+	book.generate_pdf('LaTeXTest', clean_tex=False)
+	tex=book.dumps() # The document as a string in LaTeX syntax
+	book.generate_tex() 
+	return "Your Book is called %s" %(title_name)
+
 	#LaTex Time
 
 	# Basic Book Creation with title, author

@@ -67,8 +67,13 @@
 				<div>
 					<!-- Buttons -->
 					<a class="btn btn-create" onclick="bookCreate()"> Create a Book </a>
-					<a class="btn btn-edit" href="#"> Edit a Book </a>
+					<a class="btn btn-edit" href="http://127.0.0.1:5000/edit"> Edit a Book </a>
 					<a class="btn btn-publish" href="#"> Publish a Book </a>
+					<!-- LaTeX Conversion -->
+					<!-- WILL WORK AS SAVE AND END -->
+					<form action ="/latex" method= "POST">
+						<input type="Submit" name="done" value="PDF"/>
+					</form>
 				</div>
 			</div>
 			

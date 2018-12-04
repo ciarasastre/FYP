@@ -1,7 +1,9 @@
 # FYP
-Fourth Year Project
+Fourth Year Project </br>
 
-**Title : TypeWriter ** </br>
+Title : TypeWriter </br>
+Student number : C15355361 </br>
+Student name : Ciara Sastre </br>
 
 **Files:** </br>
 There are Three Folders: </br>

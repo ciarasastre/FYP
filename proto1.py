@@ -93,7 +93,7 @@ def latex():
 	book.append(chapter_num + '\n')
 	book.append(book_text)
 
-	book.generate_pdf('LaTeXTest', clean_tex=False)
+	book.generate_pdf(title_name + 'LaTeXTest', clean_tex=False)
 	tex=book.dumps() # The document as a string in LaTeX syntax
 	book.generate_tex() 
 	return "Your Book is called %s" %(title_name)

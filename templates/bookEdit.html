@@ -16,11 +16,6 @@
 	<!-- Fill Book button -->
 	<input type="button" id="ltButton" value="FILL BOOK" onclick="apply()"/> <!--onclick="apply()" -->
 
-	<input type="button" id="ltButton" value="SAVE" onclick="saveBook()" />
-
-	<!-- Convert button -->
-	<input type="button" id="ltButton" value="PDF"/>
-
 	<h1> Edit your book here</h1>
 	
 	<p id="demo"> </p>
@@ -31,13 +26,6 @@
 			<div id="info_title"> </div> 
 			<div id="info_author"> </div>
 			<div id="info_chpnum"> </div>
-
-			<!--<div id="info_text"> </div> -->
-
-			<!-- Should be in text area -->
-			<!--<textarea class="textArea" id="info_text">
-			</textarea> -->
-			
 		</div>
 
 		<div id="newWords"> </div>
@@ -46,16 +34,15 @@
 		<form action ="/done" method= "POST">
 			<!--Text : <input type="text" name="text"> </br>-->
 			<textarea class="textArea" id="info_text" name="new_text"> </textarea>
-
-			<input type="Submit" name="form" values="Save"/>
+			<input type="Submit" name="form" value="Save"/>
 		</form>
 
+	</br>
 
 		<!-- LaTeX Conversion -->
 		<!-- WILL WORK AS SAVE AND END -->
 		<form action ="/latex" method= "POST">
-
-			<input type="Submit" name="done" values="PDF"/>
+			<input type="Submit" name="done" value="PDF"/>
 		</form>
 
 	</div>

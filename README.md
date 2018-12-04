@@ -4,6 +4,7 @@ Fourth Year Project </br>
 Title : TypeWriter </br>
 Student number : C15355361 </br>
 Student name : Ciara Sastre </br>
+Supervisor : Paul Doyle </br>
 
 **Files:** </br>
 There are Three Folders: </br>
@@ -29,9 +30,9 @@ def book(): This class is run by the proto1.py python file. It manages the creat
 def latex(): This class is run by the proto1.py python file. It manages converting the JSON to LaTeX. It opens the JSON file</br>
             stores the information into variables. These variables are put through a series of LaTeX rules for example :</br>
             book.preamble.append(Command('title', title_name))</br>
-            This takes the title name the user input, into the title of the LaTeX PDF book.</br>
+            This takes the title name the user input, into the title of the LaTeX PDF book. As well as the images.</br>
             This code also generates a PDf and Tex file.</br>
-            
+	    
 @app.route("/")</br>
 def hello(): This along with the other classes are just rendering the HTML templates. Using return render_template("webpageproto1.html")</br>
 	

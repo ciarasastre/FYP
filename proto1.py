@@ -15,11 +15,11 @@ def test():
 #Connect to the Site Here:
 @app.route("/")
 def hello():
-	return render_template("webpageproto1.html")
+	return render_template("userPage.html")
 
 @app.route("/home")
 def home():
-	return render_template("webpageproto1.html")
+	return render_template("userPage.html")
 
 @app.route("/edit")
 def edit():
@@ -39,7 +39,7 @@ def done():
 
 	with open('./templates/test.json', 'w') as editBook:
 		json.dump(data, editBook)
-	return("JSON File changed!")
+	return render_template("userPage.html")
 
 #Getting title name back from HTML
 @app.route("/book", methods=["GET","POST"])

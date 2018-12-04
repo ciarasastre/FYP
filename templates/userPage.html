@@ -6,8 +6,7 @@
 		<meta name="viewport" content="width=device-width">
 		<title>USER PAGE</title>
   
-		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bookEdit.css') }}">
-		<script type="text/javascript" src="{{url_for('static', filename='styles/bookEdit.js')}}"></script>
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/userpage.css') }}">
 	
 		<!-- BOOTSTRAP-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -53,59 +52,48 @@
 		<div class="container">
 		<div class ="row1">
 		
-			<div class="col-sm-2 banner-chapters" style="background-color:lavender;">
+			<div class="col-sm-3 banner-photo" style="background-color:lavender;">
 				<div>
-					<h1> Chapter List goes Here </h1>
-					<p> Chapter: 1 </p>
-					<p> Chapter: 2 </p>
-					<p> Chapter: 3 </p>
-					<p> Chapter: 4 </p>
-					<p> Chapter: 5 </p>
+					<!-- Account Photo here -->
+					<img class="acc-photo img-responsive img-circle" src="cat.jpg"> </a>	
 				</div>
 			</div>
 			
-			<div class="col-sm-5 banner-textEditor" style="background-color:lavenderblush;"> 
-				<h1> Text Editor Here </h1>
+			<div class="col-sm-9 banner-info" style="background-color:lavenderblush;"> 
+				<h1> Welcome Back </h1>
+				<p class="username"> Ciara Sastre !</p>
+				<p> Click the buttons to get writing or view your gallery below.</p>
+				
+				<div>
+					<!-- Buttons -->
+					<a class="btn btn-create" onclick="bookCreate()"> Create a Book </a>
+					<a class="btn btn-edit" href="#"> Edit a Book </a>
+					<a class="btn btn-publish" href="#"> Publish a Book </a>
+				</div>
+			</div>
+			
+		</div> <!-- END ROW1 -->
+	
+		<div class ="row1">	
+			<div class="col-sm-3 banner-photo" style="background-color:lavender;">
+			</div>
 
-				<!-- Saving -->
-				<form action ="/done" method= "POST">
+			<div class="col-sm-9 banner-info" style="background-color:lavenderblush;"> 
+				<form action ="/book" method= "POST">
 
-					<!--Text : <input type="text" name="text"> </br>-->
-					<textarea class="textArea" id="info_text" name="new_text"> </textarea>
-					<input class="btn btn-create" type="Submit" name="form" value="Save"/>
+				Title : <input type="text" name="title_name"> </br>
+				Author : <input type="text" name="author_name"> </br>
+				Chapter : <input type="text" name="chapter_number"> </br>
+				Text : <input type="text" name="text"> </br>
+
+				<input type="Submit" name="form" value="Create Book"/>
+
 				</form>
-				
 			</div>
-			
-			<div class="col-sm-5 banner-LaTexView" style="background-color:lavenderblush;"> 
-				<h1>LaTeX View will be here</h1>
 
-				<div id="info_all"> 
-					<div id="info_title"> </div> 
-					<div id="info_author"> </div>
-					<div id="info_chpnum"> </div>
-				</div>
-
-				<div id="newWords"> </div>
-				
-			</div>
-			
-		</div> <!-- END ROW2 -->
+		</div><!-- END ROW2 -->
 	</div>
-		<div class="container">
-			<div class = "row1">
-				<div class="col-sm-2 banner-buttons" style="background-color:lavender;">
-					<div>
-					<a class="btn btn-create" onclick="apply()"> Fill Book </a>
-					<a class="btn btn-create" > Save Book </a>
-					
-					<div>
-				</div>
-			
-			</div><!-- END ROW2 -->
-		
-		</div><!-- END CONTAINER -->
-		
+	
 	</header><!--  -->
 	
 </body>

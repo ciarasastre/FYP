@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<title>KeyWriter-Library</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
+		<!-- Include external JS libs. -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+	 
+		<!-- Include Editor JS files. -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.pkgd.min.js"></script>
+		
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+#mainImg{
+	width:90%;
+	height:100%;
+	margin-left: 5%;
+}
+
+.textArea{
+	width:20%;
+	height:20%
+}
+
+.menu {
+  display: none;
+}
+</style>
+
+<body class="w3-pale-red w3-large">
+
+<head>
+    <meta charset="utf-8">
+	
+	<!-- TEXTAREA CSS -->
+    <!-- Include external CSS. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+ 
+    <!-- Include Editor style. -->
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+		<link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	
+</head>
+
+<!-- Initialize the editor. -->
+		<script> $(function() { $('textarea').froalaEditor() }); 
+		</script>
+		
+<!-- Add a background color and large text to the whole page -->
+<div>
+
+	<!-- About Container -->
+	<div class="w3-container" id="about" style="margin-top: 8%;">
+		
+	    <div class="w3-content" style="margin-bottom:5%; margin-left:37%;">
+		<span class="w3-tag" style="font-size:30px">Edit your book here! </span>
+		</div>
+		
+		<div class="w3-content" style="margin-bottom:5%; margin-left:5%;">
+
+			<!-- Saving -->
+			<form action ="/done" method= "POST">
+
+				<textarea class="textArea" id="info_text" name="new_text"> </textarea> 
+				<input type="text" id="info_pageNav" name="pageNav"> 
+
+				<div class="w3-content" style="max-width:600px; margin-top: 1%">
+				  <input class="w3-button w3-black w3-margin-bottom" type="Submit" name="form" value="Save and Exit"/>
+				</div>
+			</form>
+		</div>
+		<!-- TEXT AREA ENDS HERE -->
+		
+	</div>
+<!-- End page content -->
+</div>
+
+</body>
+
+<!-- Footer -->
+<footer class="w3-center w3-pink w3-padding-48 w3-large" style="margin-top: 8%">
+
+</footer>
+
+</html>

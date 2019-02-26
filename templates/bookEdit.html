@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" > apply(); </script>
   
 	</head>
 
@@ -69,10 +70,15 @@
 
 				<!-- Saving -->
 				<form action ="/done" method= "POST">
-
-					<!--Text : <input type="text" name="text"> </br>-->
 					<textarea class="textArea" id="info_text" name="new_text"> </textarea>
-					<input class="btn btn-create" type="Submit" name="form" value="Save"/>
+					<input class="btn btn-create" type="Submit" name="form" onclick="prevPage()" value="Previous Page"/>
+
+					<!--Page : <div id="info_pageNav" name="pageNav" onclick="nextPage()"> </div> <input type="number" id="info_pageNav" name="pageNav"> </br> -->
+					
+					<input type="text" id="info_pageNav" name="pageNav"> 
+					<!--<div id="info_page" name="pageNav"> </div>-->
+					
+					<input class="btn btn-create" type="Submit" name="form" onclick="nextPage()" value="Next Page"/>
 				</form>
 				
 			</div>
@@ -92,19 +98,44 @@
 			
 		</div> <!-- END ROW2 -->
 	</div>
-		<div class="container">
-			<div class = "row1">
-				<div class="col-sm-2 banner-buttons" style="background-color:lavender;">
-					<div>
-					<a class="btn btn-create" onclick="apply()"> Fill Book </a>
-					<a class="btn btn-create" > Save Book </a>
+
+	<div class="container">
+		<div class = "row1">
+			<div class="col-sm-2 banner-buttons" style="background-color:lavender;">
+				<div>
+					<a class="btn btn-create" onclick="saveBook()"> Save Book </a>
 					
-					<div>
-				</div>
-			
-			</div><!-- END ROW2 -->
-		
-		</div><!-- END CONTAINER -->
+				<div>
+			</div>
+		</div><!-- END ROW2 -->
+	</div><!-- END CONTAINER -->
+
+	<!------------------------------------------------ TEMP ------------------------------------------------->
+	<div class="container">
+		<div class = "row1">
+			<!------ Page Navigation Section --->
+			<div class="col-sm-5 banner-buttons" style="background-color:lavenderblush;">
+				<div>
+					<a class="btn btn-create" onclick="prevPage()"> Previous Page </a> 
+					<a class="btn btn-create" onclick="nextPage()"> Next Page </a>
+				<div>
+			</div>
+		</div><!-- END ROW2 -->
+	</div><!-- END CONTAINER -->
+
+	<div class="container">
+		<div class = "row1">
+			<div class="col-sm-5 banner-buttons" style="background-color:lavender;">
+				<div>
+					<a class="btn btn-create" onclick="italic()"> Italics </a>
+					<a class="btn btn-create" onclick="bold()" > Bold </a>
+					
+				<div>
+			</div>
+		</div><!-- END ROW2 -->
+	</div><!-- END CONTAINER -->
+
+	<!------------------------------------------------ TEMP ------------------------------------------------->
 		
 	</header><!--  -->
 	

@@ -66,3 +66,8 @@ a.btn:hover
 {
 	margin: 30px 0;
 }
+
+#info_pageNav
+{
+	width: 50px;
+}

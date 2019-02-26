@@ -55,7 +55,7 @@
 			<div class="col-sm-3 banner-photo" style="background-color:lavender;">
 				<div>
 					<!-- Account Photo here -->
-					<img class="acc-photo img-responsive img-circle" src="cat.jpg"> </a>	
+					<img class="acc-photo img-responsive img-circle" src="cat.jpg"> </a>
 				</div>
 			</div>
 			
@@ -68,12 +68,7 @@
 					<!-- Buttons -->
 					<a class="btn btn-create" onclick="bookCreate()"> Create a Book </a>
 					<a class="btn btn-edit" href="http://127.0.0.1:5000/edit"> Edit a Book </a>
-					<a class="btn btn-publish" href="#"> Publish a Book </a>
-					<!-- LaTeX Conversion -->
-					<!-- WILL WORK AS SAVE AND END -->
-					<form action ="/latex" method= "POST">
-						<input type="Submit" name="done" value="PDF"/>
-					</form>
+					<a class="btn btn-publish" href="http://127.0.0.1:5000/latex"> Publish a Book </a>
 				</div>
 			</div>
 			
@@ -84,6 +79,7 @@
 			</div>
 
 			<div class="col-sm-9 banner-info" style="background-color:lavenderblush;"> 
+				
 				<form action ="/book" method= "POST">
 
 				Title : <input type="text" name="title_name"> </br>

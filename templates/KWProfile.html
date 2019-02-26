@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<title>KeyWriter-Write/EditABook</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<style>
+
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+#mainImg{
+	width:90%;
+	height:100%;
+	margin-left: 5%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+
+<!-- Links (sit on top) cover min-height: 55%;
+  width: 75%;-->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-white"> <!-- Background of the nav bar -->
+  
+    <div class="w3-col s2" style="margin-left:15%">
+      <a href="/home" class="w3-button w3-block w3-hover-teal">HOME</a>
+    </div>
+	
+    <div class="w3-col s2">
+      <a href="/profile" class="w3-button w3-block w3-purple">WRITE/EDIT A BOOK</a>
+    </div>
+	
+    <div class="w3-col s2">
+      <a href="/library" class="w3-button w3-block w3-hover-pink">MY LIBRARY</a>
+    </div>
+	
+    <div class="w3-col s2">
+      <a href="/soon" class="w3-button w3-block w3-hover-orange" >COMMUNITY</a>
+    </div>
+	
+  </div>
+</div>
+
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-pale-blue w3-large">
+
+	<!-- Create a Book Popup -->
+	  <div id="CABPopup" class="w3-modal">
+	    <div class="w3-modal-content w3-animate-top w3-card-4">
+	      <header class="w3-container w3-teal w3-center w3-padding-32"> 
+
+	        <span onclick="document.getElementById('CABPopup').style.display='none'" 
+	       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+
+	        <h2 class="w3-wide"><i class="fa fa-book-open w3-margin-right"></i>New Book</h2> 
+	      </header>
+	      
+	      <div class="w3-container">
+	      <form action ="/book" method= "POST">
+
+	        <p><label><i class="fas fa-arrow-alt-circle-right"></i> Book Title: </label></p>
+	        <input class="w3-input w3-border" type="text" name="title_name" placeholder="What is your book called?">
+
+	        <p><label><i class="fas fa-arrow-alt-circle-right"></i> Author Display Name:</label></p>
+	        <input class="w3-input w3-border" type="text" name="author_name" placeholder="What name do you want displayed?">
+
+	        <input type="Submit" name="form" class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right" value= CREATE />
+
+	       <form>
+
+	        <button class="w3-button w3-red w3-section" onclick="document.getElementById('CABPopup').style.display='none'">Close <i class="fa fa-remove"></i></button>
+	        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+	      </div>
+	    </div>
+	  </div>
+
+<!-- About Container href="/editor" <p><label><i class="fas fa-arrow-alt-circle-right"></i> Choose a Layout:</label></p>-->
+<div class="w3-container" id="about" >
+	
+  <div class="w3-content" style="max-width:700px; ">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Welcome to your Profile!</span></h5>
+    <p></p>
+  </div>
+  
+	<!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white" style="margin-left:10%;">
+        <div class="w3-container">
+         <h4 class="w3-center">My Profile</h4>
+         <p class="w3-center"><img src="/static/img/ava.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <hr>
+         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Dublin, IRE</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+        </div>
+      </div>
+      <br>
+	</div><!-- END Left Column -->
+	
+	<!-- Full Right Column -->
+    <div class="w3-col m8">
+	
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white" style="margin-left:10%; margin-bottom:10%;">
+	  
+        <div class="w3-container">
+		
+         <h4 class="w3-center"></h4>
+		 <a class="w3-button w3-block w3-purple" onclick="document.getElementById('CABPopup').style.display='block'">WRITE A NEW BOOK</a>
+		 <h4 class="w3-center"> OR </h4>
+		 <h4 class="w3-center"> Select a book below to edit:</h4> <!-- href="/editor" -->
+         <hr>
+		 
+			<!-- CARD FOR BOOKS -->
+			<div> <!-- "w3-row-padding w3-padding-32" style="margin:0 -16px;" width:700px; background-color:black"-->
+			
+				<div class="w3-third w3-margin-bottom" style="border: 1px solid gray;">
+				  <div class="w3-container w3-white">
+					<p><b>Harry Potter and the Prisoner of Azkaban. </b></p>
+					<p class="w3-opacity">J.K Rowling</br>Fri 27 Nov 2016</p>
+					<a class="w3-button w3-black w3-margin-bottom" href="template5.html" style="margin-left:30%">Edit</a>
+				  
+				  </div>
+				</div>
+			</div>
+			
+			<!-- CARD FOR BOOKS -->
+			<div>
+			
+				<div class="w3-third w3-margin-bottom" style="border: 1px solid gray; margin-left:1%">
+				  <div class="w3-container w3-white">
+					<p><b>Harry Potter and the Prisoner of Azkaban. </b></p>
+					<p class="w3-opacity">J.K Rowling</br>Fri 27 Nov 2016</p>
+					<a class="w3-button w3-black w3-margin-bottom" href="template5.html" style="margin-left:30%">Edit</a>
+				  
+				  </div>
+				</div>
+			</div>
+		
+        </div>
+      </div>
+
+      <div class="w3-col s2" style="margin-left:15%">
+	      <a href="/latex" class="w3-button w3-block w3-teal">LATEX</a> <!-- w3-black -->
+	  </div>
+
+      <br>
+	</div><!-- END Left Column -->
+</div>
+
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-purple w3-padding-48 w3-large" style="margin-top: 8%">
+</footer>
+
+<script>
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('CABPopup');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "title_name": "Winnie the Pooh",
+  "author_name": "Christopher Robins",
+  "pageNav": 2,
+  "chapters": {
+    "ch1": {
+      "p1": "<p><span style=\"font-family: Impact,Charcoal,sans-serif;\">this is in <em>italics</em>, this is <strong>bold</strong></span></p><p><span style=\"font-family: Impact,Charcoal,sans-serif;\">and this is in ehhhh normal.</span></p><p><span style=\"font-family: Impact,Charcoal,sans-serif;\">yes!</span></p>"
+    }
+  }
+}

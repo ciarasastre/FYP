@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
 
 		<!-- Include external JS libs. -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -13,6 +14,7 @@
 	 
 		<!-- Include Editor JS files. -->
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/js/froala_editor.pkgd.min.js"></script>
+		<script type="text/javascript" src="{{url_for('static', filename='styles/KWEditorJS.js')}}"></script>
 		
 <style>
 body, html {
@@ -26,17 +28,30 @@ body, html {
 	margin-left: 5%;
 }
 
-.textArea{
-	width:20%;
-	height:20%
-}
-
 .menu {
   display: none;
 }
+
+.pdfView{
+	padding:30px;
+}
+
+#topMenu{
+	font-family: "Bluebell", sans-serif;
+}
+
+#contents{
+	font-family: "Cinzel", sans-serif;
+	display: block;
+}
+
+#currentPage{
+	font-family: "Cinzel", sans-serif;
+	display: block;
+}
 </style>
 
-<body class="w3-pale-red w3-large">
+<body class="w3-pale-blue w3-large">
 
 <head>
     <meta charset="utf-8">
@@ -51,47 +66,123 @@ body, html {
     <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 	
 	<!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
-		<link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" />
+	<!--<link href="../css/froala_style.min.css" rel="stylesheet" type="text/css" /> -->
+	<script type="text/javascript" src="{{url_for('static', filename='styles/KWEditorJS.js')}}"></script>
+
+	<script type="text/javascript" > apply(); </script>
 	
+	<div id="topMenu" class="w3-row w3-white w3-large" style="margin-top: 20px;">
+		<div class="w3-col m3" style="margin-left: 200px;">
+			<span id="info_title" style="font-size:20px"></span>
+		</div>
+		<div class="w3-col m3" style="margin-left: 100px;">
+			<span class="w3-tag-middle" style="font-size:30px">Editor</span>
+		</div>
+		<div class="w3-col m3">
+			<span id="info_author" style="font-size:20px"></span>
+		</div>
+	</div>
+
 </head>
 
-<!-- Initialize the editor. -->
-		<script> $(function() { $('textarea').froalaEditor() }); 
+<!-- Initialize the editor. this.insertHTML('My new HTML'); Buttons that are removed: 'underline','strikeThrough','insertImage','lineBreaker', -->
+		<script>$(function() {$('textarea').froalaEditor({
+	      // Add the custom buttons in the toolbarButtons list, after the separator.
+	      toolbarButtons: ['fullscreen','bold','italic','undo','redo'],
+		  spellcheck: true,
+		  shortcutsEnabled: ['bold', 'italic'],
+		  height: 800,
+      	  width: 700
+    	})
+  		});
+  		// $(function() { $('textarea').froalaEditor() });  div#froala-editor
 		</script>
-		
-<!-- Add a background color and large text to the whole page -->
-<div>
 
+<!-- Add a background color and large text to the whole page -->
+<div  class="w3-row">
+
+	<div class="w3-row w3-white" style="width:700px; margin-left: 400px;">
+		<div class="w3-content" style="width:600px; margin-top: 1%; margin-left: 100px; font-family: Cinzel">
+			<input form="updateForm" id="save" class="w3-button w3-black w3-round w3-margin-bottom " type="Submit" value="Save" onclick="saved();"/>
+			<a style="margin-left: 300px;" class="w3-button w3-round w3-black w3-margin-bottom" value="Exit" href="/profile"> Exit </a>
+		</div>
+	</div>
 	<!-- About Container -->
 	<div class="w3-container" id="about" style="margin-top: 8%;">
-		
-	    <div class="w3-content" style="margin-bottom:5%; margin-left:37%;">
-		<span class="w3-tag" style="font-size:30px">Edit your book here! </span>
-		</div>
-		
-		<div class="w3-content" style="margin-bottom:5%; margin-left:5%;">
 
-			<!-- Saving -->
-			<form action ="/done" method= "POST">
-
-				<textarea class="textArea" id="info_text" name="new_text"> </textarea> 
-				<input type="text" id="info_pageNav" name="pageNav"> 
-
-				<div class="w3-content" style="max-width:600px; margin-top: 1%">
-				  <input class="w3-button w3-black w3-margin-bottom" type="Submit" name="form" value="Save and Exit"/>
-				</div>
+		<!--<div class="w3-col m4 w3-white">
+			<form action ="/updateChap" method= "POST">
+				<div id="chapters"> </div>
 			</form>
+		</div> -->
+
+
+		<div class="w3-col m6">
+
+		<div class="w3-content" style="margin-bottom:5%; margin-left:5%;">
+			<!-- Saving -->
+			<form id="updateForm" action ="/update" method= "POST">
+
+				<div class="w3-col m6 w3-pale-blue"  style="width:650px"> 
+				<div id="contents"></div>
+				</div>
+
+				<!-- PrevArea HERE stores previous area so it knows where to store the new text   style="margin-bottom:5%; margin-left:5%;"-->
+				<input type="text" id="area" name="area" style="display: none">
+
+				<!-- CONTENTS HERE -->
+				<div class="w3-content w3-blue">
+
+					<!--<button id="btn" onClick="createButton()"> Create A Chapter </button>-->
+				</div>
+
+				<p id="currentPage">Current page is: Main Page</p>
+
+
+				<textarea  class="w3-col m6 w3-blue" class="textArea" id="info_text" name="new_text"> </textarea> 
+
+				<!-- SAVE BUTTON HERE 
+				<div class="w3-content" style="max-width:600px; margin-top: 1%">
+				  <input id="save" class="w3-button w3-black w3-margin-bottom" type="Submit" value="Save"/>
+				</div>-->
+			</form>
+
 		</div>
-		<!-- TEXT AREA ENDS HERE -->
-		
+		</div>
+		<!--<div class="w3-content" style="max-width:600px; margin-top: 1%">
+				<a class="w3-button w3-black w3-margin-bottom" value="IMG" onclick="click();" > IMG </a>
+				<img id="img" src="./static/img/harryPotter.jpg" alt="Smiley face" width="42" height="42"> width="50%" height="600px
+		</div> -->
+
+		<div class="w3-col m6 w3-pale-blue">
+		<div class="w3-col s2" style="width:100%; font-family: Cinzel">
+			<a href="/latex" class="w3-button w3-block w3-teal" onclick="refresh();">Click here to Update your book</a> <!-- w3-black -->
+		</div>
+
+		<div class="pdfView" id="pdf">
+		<embed id="pdfSource" src="newSource" type="application/pdf" width="100%" height="850px"/>
+
+		<!--<script type="text/javascript">
+    	pdf();
+		</script>-->
+
+		</div>
+		</div>
+<!-- End page content window.onload = #toolbar=0&navpanes=0&scrollbar=0  ../static/styles/PdfDemo.pdf = works   ./LaTeXFiles/'+title_name+'LaTeX.pdf' -->
 	</div>
-<!-- End page content -->
+
+	<div class="w3-row w3-white">
+		<div class="w3-content" style="width:600px; margin-top: 1%">
+			<input form="updateForm" id="save" class="w3-button w3-black w3-margin-bottom" type="Submit" value="Save"/>
+			<a class="w3-button w3-black w3-margin-bottom" value="Exit" href="/profile"> Exit </a>
+		</div>
+	</div>
 </div>
 
 </body>
 
 <!-- Footer -->
-<footer class="w3-center w3-pink w3-padding-48 w3-large" style="margin-top: 8%">
+<footer>
 
 </footer>
 

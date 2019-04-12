@@ -1,0 +1,16 @@
+{
+  "title_name": "TestBook",
+  "author_name": "Me",
+  "chapters": {
+    "ch1": "<p>Begin writing your story here...Now can this please work? PLeaes</p>"
+  },
+  "template": {
+    "type": "default",
+    "coverpage": "<p>default</p>",
+    "fontfamily": "Times",
+    "border": "no",
+    "align": "left"
+  },
+  "aknow": "<p>This is your acknowledgements section&nbsp; slept right this time.</p>",
+  "toc": "<p>This is your table of contents section</p>"
+}

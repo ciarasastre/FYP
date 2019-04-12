@@ -7,6 +7,7 @@ var words = "";
 
 function apply()
 {
+	// Pass the unique code here to access the unique json file
     var requestURL = 'http://127.0.0.1:5000/test';
     var request = new XMLHttpRequest();
     request.open('GET', requestURL);

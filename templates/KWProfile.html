@@ -7,12 +7,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 <style>
 
 body, html {
   height: 100%;
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Cinzel", sans-serif;
+  background-image: url("/static/img/mahog.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@font-face{
+  font-family:"Bluebell";
+  src: url("Bluebell.tff") format("embedded-openttype"),
+  url("Bluebell.otf") format("opentype");
 }
 
 #mainImg{
@@ -24,12 +35,98 @@ body, html {
 .menu {
   display: none;
 }
+
+#navbar{
+  font-family: "Cinzel", sans-serif;
+}
+
+/* The container */
+.container {
+  display: inline block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/* Styling for editing cards*/
+.cards
+{
+	background: pink;
+	display: block;
+	height: 50px:
+	width: 25px;
+	padding: 10px;
+	margin: 10px;
+}
 </style>
+<head> 
+
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript" src="{{url_for('static', filename='styles/KWProfileJS.js')}}"></script>
+
+	<script type="text/javascript" > applyEdit(); </script>
+</head>
 <body>
 
 <!-- Links (sit on top) cover min-height: 55%;
   width: 75%;-->
-<div class="w3-top">
+<div class="w3-top" id="navbar">
   <div class="w3-row w3-padding w3-white"> <!-- Background of the nav bar -->
   
     <div class="w3-col s2" style="margin-left:15%">
@@ -53,7 +150,7 @@ body, html {
 
 
 <!-- Add a background color and large text to the whole page -->
-<div class="w3-pale-blue w3-large">
+<div class="w3-large " style="margin-top: 100px;">
 
 	<!-- Create a Book Popup -->
 	  <div id="CABPopup" class="w3-modal">
@@ -75,40 +172,148 @@ body, html {
 	        <p><label><i class="fas fa-arrow-alt-circle-right"></i> Author Display Name:</label></p>
 	        <input class="w3-input w3-border" type="text" name="author_name" placeholder="What name do you want displayed?">
 
-	        <input type="Submit" name="form" class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right" value= CREATE />
+	        <p><label><i class="fas fa-arrow-alt-circle-right"></i> Choose Your Template:</label></p>
 
-	       <form>
+	        <label class="container" 
+	        onclick="document.getElementById('CustomT').style.display='none'"
+	        >Default Template 
+			  <input type="radio" value="default" checked="checked" name="template">
+			  <span class="checkmark"></span>
+			</label>
 
-	        <button class="w3-button w3-red w3-section" onclick="document.getElementById('CABPopup').style.display='none'">Close <i class="fa fa-remove"></i></button>
-	        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+			<label class="container"
+			onclick="document.getElementById('CustomT').style.display='none'"
+			>Harry Potter
+			  <input type="radio" value="harrypotter" name="template">
+			  <span class="checkmark"></span>
+			</label>
+
+			<label class="container"
+			onclick="document.getElementById('CustomT').style.display='none'"
+			>Winnie The Pooh
+			  <input type="radio" value="wtp" name="template">
+			  <span class="checkmark"></span>
+			</label>
+
+			<label class="container" 
+			onclick="document.getElementById('CustomT').style.display='block'"
+			>Custom Template
+			  <input type="radio" value="custom" name="template">
+			  <span class="checkmark"></span>
+			</label>
+
+	        <label id="CustomT">
+
+	        	<div style="float:left">
+
+				 	<p><label><i class="fas fa-arrow-alt-circle-right"></i>Font:</label></p>
+
+				    <select class="w3-teal" name="fontfamily">
+					    <option class="w3-teal" value="arial">Arial</option>
+					    <option class="w3-teal" value="impact">Impact</option>
+					    <option class="w3-teal" value="times">Times New Roman</option>
+				  	</select>
+
+			        <p><label><i class="fas fa-arrow-alt-circle-right"></i>Border:
+			        <label class="container">Yes
+					  <input type="radio" value="yes" name="border">
+					  <span class="checkmark"></span>
+					</label>
+
+					<label class="container">No
+					  <input type="radio" value="no" name="border">
+					  <span class="checkmark"></span>
+					</label>
+					</label></p>
+
+			        <p><label><i class="fas fa-arrow-alt-circle-right"></i>CoverPage:
+					<label class="container">Yes
+					  <input type="radio" value="yes" name="coverpage">
+					  <span class="checkmark"></span>
+					</label>
+
+					<label class="container">No
+					  <input type="radio" value="no" name="coverpage">
+					  <span class="checkmark"></span>
+					</label>
+					</label></p>
+
+				</div>
+				<div style="float:right">
+					<p><label><i class="fas fa-arrow-alt-circle-right"></i>Alignment:</label></p>
+			        <select class="w3-teal" name="align">
+					    <option class="w3-teal" value="Left">Left</option>
+					    <option class="w3-teal" value="Center">Center</option>
+					    <option class="w3-teal" value="Right">Right</option>
+				  	</select>
+				
+			        <p><label><i class="fas fa-arrow-alt-circle-right"></i>Aknowledgements:
+			        <label class="container">Yes
+					  <input type="radio" value="yes" name="aknow">
+					  <span class="checkmark"></span>
+					</label>
+
+					<label class="container">No
+					  <input type="radio" value="no" name="aknow">
+					  <span class="checkmark"></span>
+					</label>
+					</label></p>
+				
+
+			        <p><label><i class="fas fa-arrow-alt-circle-right"></i>Table Of Contents:
+			        <label class="container">Yes
+					  <input type="radio" value="yes" name="toc">
+					  <span class="checkmark"></span>
+					</label>
+
+					<label class="container">No
+					  <input type="radio" value="no" name="toc">
+					  <span class="checkmark"></span>
+					</label>
+					</label></p>
+				</div>
+			</label>
+	       
+	       <input type="Submit" name="form" class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right" value="CREATE"/>
+	      </form>
 	      </div>
 	    </div>
 	  </div>
 
+
 <!-- About Container href="/editor" <p><label><i class="fas fa-arrow-alt-circle-right"></i> Choose a Layout:</label></p>-->
 <div class="w3-container" id="about" >
 	
-  <div class="w3-content" style="max-width:700px; ">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Welcome to your Profile!</span></h5>
-    <p></p>
-  </div>
   
 	<!-- Left Column -->
     <div class="w3-col m3">
       <!-- Profile -->
       <div class="w3-card w3-round w3-white" style="margin-left:10%;">
         <div class="w3-container">
-         <h4 class="w3-center">My Profile</h4>
+         <h4 class="w3-center" style="font-family:Bluebell">My Profile</h4>
          <p class="w3-center"><img src="/static/img/ava.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
+         <p><i class="fab fa-angellist fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Dublin, IRE</p>
          <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
         </div>
       </div>
       <br>
+      <!-- Publish book section -->
+      <div class="w3-card w3-round w3-white" style="margin-left:10%;">
+        <div class="w3-container">
+         <h4 class="w3-center" style="font-family:Bluebell">Click to Finish a Book:</h4>
+         <hr>
+
+         <form class="w3-padding w3-margin w3-border" action ="/libMode" method= "POST">
+		  <div id="lib"></div>
+		 </form>
+
+        </div>
+      </div>
+      <br>
 	</div><!-- END Left Column -->
-	
+
 	<!-- Full Right Column -->
     <div class="w3-col m8">
 	
@@ -118,55 +323,47 @@ body, html {
         <div class="w3-container">
 		
          <h4 class="w3-center"></h4>
-		 <a class="w3-button w3-block w3-purple" onclick="document.getElementById('CABPopup').style.display='block'">WRITE A NEW BOOK</a>
-		 <h4 class="w3-center"> OR </h4>
-		 <h4 class="w3-center"> Select a book below to edit:</h4> <!-- href="/editor" -->
+		 <a class="w3-button w3-block w3-purple" onclick="document.getElementById('CABPopup').style.display='block'; 
+		 document.getElementById('CustomT').style.display='none'">WRITE A NEW BOOK</a>
+		 <h4 class="w3-center" style="font-family:Bluebell" > OR </h4>
+		 <h4 class="w3-center" style="font-family:Cinzel"> Select a book below to edit:</h4> <!-- href="/editor" -->
          <hr>
 		 
-			<!-- CARD FOR BOOKS -->
-			<div> <!-- "w3-row-padding w3-padding-32" style="margin:0 -16px;" width:700px; background-color:black"-->
+			<!-- CARD FOR BOOKS 
+			<div>  "w3-row-padding w3-padding-32" style="margin:0 -16px;" width:700px; background-color:black"
 			
 				<div class="w3-third w3-margin-bottom" style="border: 1px solid gray;">
 				  <div class="w3-container w3-white">
-					<p><b>Harry Potter and the Prisoner of Azkaban. </b></p>
-					<p class="w3-opacity">J.K Rowling</br>Fri 27 Nov 2016</p>
-					<a class="w3-button w3-black w3-margin-bottom" href="template5.html" style="margin-left:30%">Edit</a>
-				  
+					<p><b>Winnie The Pooh </b></p>
+					<p class="w3-opacity">Christopher Robin</br>Fri 27 Nov 2016</p>
+
+					THIS NEEDS TO BE A FORM THAT WILL TRANSFER OVER THE TITLENAME SO IT CAN SWITCH 
+					<a class="w3-button w3-black w3-margin-bottom" href="/editor" style="margin-left:30%">Edit</a>
 				  </div>
 				</div>
+			</div> -->
+
+			<div id="Editcards">
+				<form action ="/editMode" method= "POST">
+					<div id="create">
+					</div>
+				</form>
 			</div>
-			
-			<!-- CARD FOR BOOKS -->
+
 			<div>
-			
-				<div class="w3-third w3-margin-bottom" style="border: 1px solid gray; margin-left:1%">
-				  <div class="w3-container w3-white">
-					<p><b>Harry Potter and the Prisoner of Azkaban. </b></p>
-					<p class="w3-opacity">J.K Rowling</br>Fri 27 Nov 2016</p>
-					<a class="w3-button w3-black w3-margin-bottom" href="template5.html" style="margin-left:30%">Edit</a>
-				  
-				  </div>
-				</div>
+				<form action ="/delete" method= "POST">
+					<div id="delete"> </div>
+				</form>
 			</div>
 		
         </div>
       </div>
-
-      <div class="w3-col s2" style="margin-left:15%">
-	      <a href="/latex" class="w3-button w3-block w3-teal">LATEX</a> <!-- w3-black -->
-	  </div>
-
-      <br>
 	</div><!-- END Left Column -->
 </div>
-
+</div>
 
 <!-- End page content -->
 </div>
-
-<!-- Footer -->
-<footer class="w3-center w3-purple w3-padding-48 w3-large" style="margin-top: 8%">
-</footer>
 
 <script>
 

@@ -1,10 +1,16 @@
 {
-  "title_name": "Winnie the Pooh",
-  "author_name": "Christopher Robins",
-  "pageNav": 2,
+  "title_name": "book",
+  "author_name": "book",
   "chapters": {
-    "ch1": {
-      "p1": "<p><span style=\"font-family: Impact,Charcoal,sans-serif;\">this is in <em>italics</em>, this is <strong>bold</strong></span></p><p><span style=\"font-family: Impact,Charcoal,sans-serif;\">and this is in ehhhh normal.</span></p><p><span style=\"font-family: Impact,Charcoal,sans-serif;\">yes!</span></p>"
-    }
-  }
+    "ch1": "<p>Begin writing your story here...</p>"
+  },
+  "template": {
+    "type": "default",
+    "coverpage": "default",
+    "fontfamily": "Times",
+    "border": "no",
+    "align": "left"
+  },
+  "aknow": "<p>This is your aknowledgements section</p>",
+  "toc": "This is your table of contents section"
 }

@@ -7,11 +7,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
 <style>
 
 body, html {
   height: 100%;
   font-family: "Inconsolata", sans-serif;
+}
+
+
+@font-face{
+  font-family:"Bluebell";
+  src: url("Bluebell.tff") format("embedded-openttype"),
+  url("Bluebell.otf") format("opentype");
 }
 
 #mainImg{
@@ -23,11 +31,23 @@ body, html {
 .menu {
   display: none;
 }
+
+#navbar{
+  font-family: "Cinzel", sans-serif;
+}
+
 </style>
+
+<head> 
+	<script type="text/javascript" src="{{url_for('static', filename='styles/KWLibraryJS.js')}}"></script>
+
+	<script type="text/javascript" > applyLibrary(); </script>
+</head>
+
 <body>
 
 <!-- Links (sit on top);-->
-<div class="w3-top">
+<div class="w3-top" id="navbar">
   <div class="w3-row w3-padding w3-white"> <!-- Background of the nav bar -->
   
     <div class="w3-col s2" style="margin-left:15%">
@@ -49,21 +69,6 @@ body, html {
   </div>
 </div>
 
-<!-- Header with image -->
-<header class="w3-display-container" style="width:100%; height:100%">   <!-- this is where the img is -->
-	<img src="/static/img/red.jpg" alt="Lights" id="mainImg" >
-  
-  <div class="w3-display-bottommiddle">
-    <span class="w3-tag" style="font-size:30px">View your books below!</span>
-  </div>
-  
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-black" style="font-size:90px">MY LIBRARY</span>
-  </div>
-
-</header>
-
-
 <!-- Add a background color and large text to the whole page -->
 <div class="w3-pale-red w3-large">
 
@@ -75,24 +80,20 @@ body, html {
 	        <span onclick="document.getElementById('CABPopup').style.display='none'" 
 	       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
 
-	        <h2 class="w3-wide"><i class="fa fa-book-open w3-margin-right"></i>About This Book</h2> 
-	      </header>
-	      
-	      <div class="w3-container">
-	      	<h1> Summary: </h1>
-	      <p style="text-align: center;" >Harry Potter's third year at Hogwarts starts off badly when he learns deranged killer Sirius Black has escaped from Azkaban prison and is bent on murdering the teenage wizard.</p>
-				
-				<button class="w3-button w3-black w3-margin-bottom" style="margin-left: 10%;" >Re-Edit</button>
-				<a class="w3-button w3-black w3-margin-bottom" style="margin-left: 10%;"  href="/soon" >Download PDF</a>
+	        <h2 class="w3-wide"><i class="fa fa-book-open w3-margin-right"></i>This Book</h2> 
+
+	        <div class="w3-container">
+				<button class="w3-button w3-white w3-margin-bottom" style="margin-left: 10%;" >Re-Edit</button>
+				<a href="/latex" class="w3-button w3-white w3-margin-bottom" style="margin-left: 10%;"href="/HPDemo" onclick="alert('PDF Downloaded! Check your files to view your book!')" >Download PDF</a>
 				<button class="w3-button w3-red w3-margin-bottom" style="margin-left: 15%;">Delete</button>
-	        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
-	      </div>
+	      </div> 
+
+	      </header>
 	    </div>
 	  </div>
 
-
 	<!-- About Container -->
-	<div class="w3-container" id="about" style="margin-top: 8%;">
+	<div class="w3-container" id="about">
 		
 	    <div class="w3-content" style="max-width:600px;">
 			<h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Welcome to your Library!</span></h5>
@@ -102,23 +103,28 @@ body, html {
 	    <!-- CARD FOR BOOKS -->
 	    <div> 
 			<div class="w3-third w3-margin-bottom">
-			  <img src="/static/img/hp.jpg" style="width:50%" class="w3-hover-opacity" 
+			  <img src="/static/img/harryPotter.jpg" style="width:50%" class="w3-hover-opacity" 
 			  onclick="document.getElementById('CABPopup').style.display='block'">
 
 			  <div class="w3-container w3-white" style="width:50%">
-				<p><b>Harry Potter and the Prisoner of Azkaban. </b></p>
-				<p class="w3-opacity">J.K Rowling</br>Fri 27 Nov 2016</p>
+				<p><b>Harry Potter and the Philosophers Stone </b></p>
+				<p class="w3-opacity">J.K Rowling</p>
 			  </div>
 			</div>
 		</div>
-		
+
+		<form action ="/bookMode" method= "POST">
+		<div id="addBooks">
+		</div>
+		</form>
+
+				
 	</div>
 <!-- End page content -->
 </div>
 
 <!-- Footer -->
 <footer class="w3-center w3-pink w3-padding-48 w3-large" style="margin-top: 8%">
-
 </footer>
 
 <script>

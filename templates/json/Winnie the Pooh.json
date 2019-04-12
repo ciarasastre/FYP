@@ -1,0 +1,16 @@
+{
+  "title_name": "Winnie the Pooh",
+  "author_name": "Christopher Robins",
+  "chapters": {
+    "ch1": "<p>This is winnie the pooh</p>"
+  },
+  "template": {
+    "type": "wtp",
+    "coverpage": "<p>wtp</p>",
+    "fontfamily": "Impact",
+    "border": "yes",
+    "align": "center"
+  },
+  "aknow": "<p>This is your acknowledgements section</p>",
+  "toc": "<p>This is your table of contents section</p>"
+}

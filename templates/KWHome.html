@@ -5,27 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
 <style>
+
 body, html {
   height: 100%;
-  font-family: "Inconsolata", sans-serif;
+  font-family: "Bluebell","Inconsolata", sans-serif;
+  background-image: url("/static/img/bback.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+}
+
+
+@font-face{
+  font-family:"Bluebell";
+  src: url("Bluebell.tff") format("embedded-openttype"),
+  url("Bluebell.otf") format("opentype");
 }
 
 #mainImg{
-	width:90%;
-	height:100%;
-	margin-left: 5%;
+  margin-left: 30%;
+  margin-top: 10%;
 }
 
 .menu {
   display: none;
 }
+
+#navbar{
+  font-family: "Cinzel", sans-serif;
+}
 </style>
+
 <body>
 
 <!-- Links (sit on top) cover min-height: 55%;
   width: 75%;-->
-<div class="w3-top">
+<div class="w3-top" id="navbar">
   <div class="w3-row w3-padding w3-white"> <!-- Background of the nav bar -->
   
     <div class="w3-col s2" style="margin-left:15%">
@@ -49,38 +66,27 @@ body, html {
 
 <!-- Header with image -->
 <header class="w3-display-container" style="width:100%; height:100%">   <!-- this is where the img is -->
-	<img src="/static/img/leaf.jpg" alt="Lights" id="mainImg" >
-  
-  <div class="w3-display-bottommiddle">
-    <span class="w3-tag" style="font-size:30px">Scroll down for more </span>
-  </div>
-  
-  <div class="w3-display-middle w3-center">
-    <span class="w3-text-black" style="font-size:90px">HOME</span>
-  </div>
+	<!--<img src="/static/img/book.jpg" alt="Lights" id="mainImg" > -->
 
+  <div class="w3-display-middle w3-center w3-xxlarge w3-padding" >
+    <span class="w3-tag w3-padding w3-round-xlarge w3-white" style="width:700px; height: 500px; margin-top: 50px"> Write a Book in Three Easy Steps!</span>
+
+
+    <span class="w3-tag w3-display-middle w3-white" style="font-family: cinzel; font-size:20px">Go to <a href="/profile">Write/Edit</a> to create a book.</span>
+
+    <span class="w3-tag w3-display-middle w3-white" style="font-family: cinzel; font-size:20px; margin-top: 55px"> Click Finish book in <a href="/profile">my Profile. </a> </span>
+
+    <span class="w3-tag w3-display-middle w3-white" style="font-family:cinzel; font-size:20px; margin-top: 105px"> Download  a PDF of your book in <a href="/library">my Library. </a> </span>
+
+  </div>
+</div>
+<!--
+<div class="w3-container">
+  <h2>Slideshow Indicators</h2>
+  <p>An example of using buttons to indicate how many slides there are in the slideshow, and which slide the user is currently viewing.</p>
+</div>-->
 </header>
 
-
-<!-- Add a background color and large text to the whole page -->
-<div class="w3-pale-green w3-large">
-
-<!-- About Container -->
-<div class="w3-container" id="about" style="margin-top: 8%" >
-	
-  <div class="w3-content" style="max-width:700px; margin-bottom:10%;">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Welcome to KeyWriter!</span></h5>
-    <p>This is a place where beginners and experts can come together to create wonderful books without the hassle of going through a publisher! To begin click <b>My Library</b> to create your very own new book.</p>
-    <p>Once it is created it will be saved forever in your library to edit to your hearts content! (Unless of course you want to delete it that's totally fine too!) When you're finished with your book make sure to <b>Save and Publish</b> it so you can keep a PDF of it safe on your computer.</p>
-	<p>KeyWriter takes your book and converts to LaTeX to give it a more professional look that you wouldn't be able to achieve unless you learnt how to code in LaTeX. But who wants that! KeyWriter makes it easier for people who don't know code or want to waste their time learning it. 
-	<p>So, what are you reading this for? Get over to <b> Your Library </b> and start writing!
-  </div>
-</div>
-
-
-
-<!-- End page content -->
-</div>
 
 <!-- Footer -->
 <footer class="w3-center w3-teal w3-padding-48 w3-large" style="margin-top: 8%">

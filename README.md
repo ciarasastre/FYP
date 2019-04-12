@@ -1,7 +1,7 @@
 # FYP
 Fourth Year Project </br>
 
-Title : TypeWriter </br>
+Title : KeyWriter </br>
 Student number : C15355361 </br>
 Student name : Ciara Sastre </br>
 Supervisor : Paul Doyle </br>

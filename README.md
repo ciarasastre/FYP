@@ -6,13 +6,18 @@ Student number : C15355361 </br>
 Student name : Ciara Sastre </br>
 Supervisor : Paul Doyle </br>
 
+**How To Run:** </br>
+To run this application, Click the start.bat file to get the server running locally </br>
+Then go onto http://127.0.0.1:5000/ to see the application. </br>
+
 **Files:** </br>
 There are Four Folders: </br>
 
 -> JSON = Contains all JSON files created by my program </br>
 -> Static/Styles = Contains all CSS and JS files I created </br>
+-> Static/Styles/latex = Contains all LaTeX and PDF generated files </br>
 -> Templates = Contains all HTML files I created </br>
--> LaTeXFiles = Contains all LaTeX and Tex Files generated from program. </br>
+-> LaTeXFiles = Contains all LaTeX and Tex Files generated from program. WARNING THESE ARE OLD AND UNUSED NOW </br>
 
 The proto1.py is the main python file I developed that runs this program.
 
@@ -32,13 +37,14 @@ def latex(): This class is run by the proto1.py python file. It manages converti
             book.preamble.append(Command('title', title_name))</br>
             This takes the title name the user input, into the title of the LaTeX PDF book. As well as the images.</br>
             This code also generates a PDf and Tex file.</br>
+	   
 	    
 @app.route("/")</br>
 def hello(): This along with the other classes are just rendering the HTML templates. Using return render_template("webpageproto1.html")</br>
 	
-def test(): This is a test to open the JSON file and render it on a server so the front end can access it using XMLHTTP Requests.</br>
-	
-**bookEdit.js**</br>
+def test(): This is a test to open the JSON file and render it on a server so the front end can access it using XMLHTTP Requests.</br>	
+
+**KWProfile.js**</br>
 function apply(): This calls a XMLHTTP request to the JSON file that is run on def test() above. It parses this data and stores</br>
                   it in variables.</br>
 
